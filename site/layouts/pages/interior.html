@@ -1,0 +1,23 @@
+{{ partial "header" . }}
+
+<div class="interior">
+  {{ partial "simple-hero" . }}
+  <div class="contained clearfix">
+    <div class="content">
+      {{ .Content | markdownify }}
+    </div>
+    {{ partial "sidebar" . }}
+  </div>
+  {{ if eq .Params.bottomCTA "Apply" }}
+    {{ partial "bottom-cta" .Site.Data.sidebar.apply }}
+  {{ else if eq .Params.bottomCTA "Visit" }}
+    {{ partial "bottom-cta" .Site.Data.sidebar.visit }}
+  {{ else if eq .Params.bottomCTA "Talk to Someone" }}
+    {{ partial "bottom-cta" .Site.Data.sidebar.talk }}
+  {{ else if eq .Params.bottomCTA "Financial Aid" }}
+    {{ partial "bottom-cta" .Site.Data.sidebar.finaid }}
+  {{ end }}
+  {{ partial "instagram-feed" . }}
+</div>
+
+{{ partial "footer" . }}

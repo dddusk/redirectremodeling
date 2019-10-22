@@ -1,0 +1,116 @@
+@import "imports/project.css";
+
+#landing {
+  background: url('/img/global/bg-tile.jpg');
+
+  body {
+    background: none;
+  }
+
+  .hero  {
+    position: relative;
+
+    @media (max-width: 767px) {
+      padding-top: 200px;
+    }
+
+
+    @media (max-height: 767px) {
+      padding-top: 100px;
+    }
+
+    h1 {
+      @media (max-width: 767px) {
+        font-size: $small;
+        line-height: 30px;
+      }
+
+      span:first-child {
+        display: block;
+      }
+    }
+
+    #rotating-text.clip {
+      #verbs {
+        display: inline-block;
+        padding: .2em 0;
+        overflow: hidden;
+        vertical-align: top;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 2px;
+          height: 80%;
+          background-color: $lightestGrey;
+        }
+
+        b {
+          opacity: 0;
+
+          &.is-visible {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    #verbs {
+      display: inline-block;
+      position: relative;
+      text-align: left;
+
+      b {
+        display: inline-block;
+        font-family: "leitura_newsroman", Georgia, Cambria, "Times New Roman", Times, serif;
+        position: absolute;
+        white-space: nowrap;
+        left: 0;
+        top: 0;
+        font-weight: normal;
+
+        &.is-visible {
+          position: relative;
+        }
+      }
+    }
+  }
+
+  &.no-js #verbs b {
+    opacity: 0;
+
+    &.is-visible {
+      opacity: 1;
+    }
+  }
+
+  #sun {
+    display: flex;
+    flex-direction: row-reverse;
+
+    .circle {
+      background: url(/img/logo-large.svg) no-repeat center;
+      background-size: contain;
+      height: calc($xxl * 1.61);
+      margin: 0;
+      position: absolute;
+      width: calc($xxl * 1.61);
+      z-index: -1;
+
+      @media (max-width: 767px) {
+        display: none;
+      }
+    }
+  }
+
+  #project {
+    background: #FFFEF9;
+    margin: calc($xxl * 1.61) auto 0 auto;
+    padding-top: $xl;
+    padding-bottom: calc($xl + $medium);
+    box-shadow: 0 0 $xl rgba(0,0,0,0.05);
+  }
+}
+

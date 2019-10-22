@@ -1,0 +1,81 @@
+---
+label: Work
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: Client Name
+  description: The name of the company (eg. Cincinnati Mine Machinery Co.)
+  config:
+    required: true
+- type: text
+  name: bodyclass
+  label: Page Class Name
+  description: This will be added to the body (eg. cmmc).
+  config:
+    required: true
+- type: text
+  name: headline
+  label: Headline
+  description: This will show up at the top of the work detail page.
+  config:
+    required: true
+- type: text
+  name: website
+  label: Website
+  description: Link to their website (eg. cinmine.com - no need for https://www)
+  config:
+    required: true
+- type: file
+  name: featuredImageFile
+  label: Featured Image
+  description: 350px x 350px
+  config:
+    maxSize: '4'
+- type: textarea
+  name: quote
+  label: Quote
+  description: What did someone say about this project?
+  config:
+    required: false
+    wysiwyg: true
+    schema:
+      format: markdown
+- type: textarea
+  name: attribution
+  label: Attribution
+  description: Who said the quote? Please bold the person's name.
+  config:
+    required: false
+    wysiwyg: true
+    schema:
+      format: markdown
+- type: image_gallery
+  name: images
+  label: Product Shots
+  description: Showcase the product. 1500px x 1000px (small/half) or 3000px x 1044px
+    (large/full-width).
+- type: textarea
+  name: description
+  label: Project Description
+  description: Tell us about this project.
+  config:
+    required: true
+    wysiwyg: true
+    schema:
+      format: markdown
+- type: tag_list
+  name: tags
+  label: Tags
+  description: Related terms for SEO and display.
+- type: number
+  name: weight
+  label: Order
+  description: Starts at 1, goes left to right, top to bottom
+  config:
+    required: true
+pages:
+- site/content/work/art.md
+- site/content/work/from-digital-to-print-we-helped-reactathon-knock-it-out-of-the-park-this-year.md
+- site/content/work/enter-real-world-react.md
+- site/content/work/biz-me.md

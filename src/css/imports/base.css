@@ -1,0 +1,110 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: url('/img/global/light-bg-tile.jpg');
+  font-family: 'Helvetica Neue', "Helvetica", helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  overflow-x: hidden;
+}
+
+html{
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  overflow: hidden;
+
+  > section:first-child {
+    margin-top: 0;
+  }
+}
+
+section {
+  margin: $medium auto;
+
+  @media screen and (min-width: $mobile) {
+    margin: $large auto;
+  }
+
+  @media screen and (min-width: $tablet) {
+    margin: $xl auto;
+  }
+}
+
+a {
+  color: $pink;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+a:hover, a:active, a:focus {
+  color: black;
+  outline: none;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*::selection {
+  color: white;
+  background: $darkGold;
+}
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar-track {
+  background: $offWhite;
+}
+
+::-webkit-scrollbar {
+  width: $micro;
+  height: $micro;
+}
+
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background: $pink;
+}
+
+.section-title {
+  position: relative;
+  padding-bottom: 22px;
+}
+
+#about img, .team-item img,
+.project-item img, #project-detail img,
+#client img,
+#contact img {
+  border-radius: 1px;
+  width: 100%;
+}
+
+#bottom-cta, footer {
+  text-align: center;
+}
+
+.headline {
+  padding: $medium 0;
+
+  .header-text {
+    padding-top: 62px;
+  }
+
+  h2:not(.quote):after {
+    background: white;
+    color: $pink;
+    content: '.';
+    position: relative;
+    left: -10px;
+  }
+}

@@ -1,0 +1,52 @@
+{{ partial "header" . }}
+
+<section class="hero">
+  <div class="container">
+    <div class="row">
+      <div id="rotating-text" class="clip col-md-8 col-sm-10">
+        <h5>{{ .Site.Data.landing.hook }}</h5>
+        <h1>
+          <span>{{ .Site.Data.landing.headline.lead }}</span>
+          <span id="verbs">
+            {{ range $index, $id :=  .Site.Data.landing.headline.verbs }}
+              <b{{ if eq $index 0 }} class="is-visible"{{ end }}>{{ . }}.</b>
+            {{ end }}
+          </span>
+        </h1>
+        <ul class="section-btn">
+          <a href="{{ .Site.Data.landing.primarycta.linksto }}"><span data-hover="Check Projects">{{ .Site.Data.landing.primarycta.btntext }}</span></a>
+        </ul>
+      </div>
+      <div id="sun" class="col-md-4 col-sm-10">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="project">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="section-title">
+          <h1>Our Latest Projects</h1>
+        </div>
+      </div>
+      {{ range first 3 (where .Site.RegularPages.ByWeight "Section" "work") }}
+        <div class="col-md-4 col-sm-4">
+          <div class="project-item">
+            <a href="{{ .Permalink }}">
+              <img src="{{ .Params.featuredImageFile }}" class="img-responsive" alt="{{ .Params.title }}">
+            </a>
+          </div>
+          <div class="project-overlay">
+            <h3>{{ .Params.title }}</h3>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ partial "bottom-cta" .Site.Data.landing }}
+{{ partial "footer" . }}

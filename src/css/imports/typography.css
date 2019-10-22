@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'leitura_newsitalic_bold';
+    src: url('/fonts/334742-webfont.eot');
+    src: url('/fonts/334742-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/334742-webfont.woff2') format('woff2'),
+         url('/fonts/334742-webfont.woff') format('woff'),
+         url('/fonts/334742-webfont.ttf') format('truetype'),
+         url('/fonts/334742-webfont.svg#leitura_newsitalic_4') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'leitura_newsroman_bold';
+    src: url('/fonts/334744-webfont.eot');
+    src: url('/fonts/334744-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/334744-webfont.woff2') format('woff2'),
+         url('/fonts/334744-webfont.woff') format('woff'),
+         url('/fonts/334744-webfont.ttf') format('truetype'),
+         url('/fonts/334744-webfont.svg#leitura_newsroman_4') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'leitura_newsitalic';
+    src: url('/fonts/334747-webfont.eot');
+    src: url('/fonts/334747-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/334747-webfont.woff2') format('woff2'),
+         url('/fonts/334747-webfont.woff') format('woff'),
+         url('/fonts/334747-webfont.ttf') format('truetype'),
+         url('/fonts/334747-webfont.svg#leitura_newsitalic_2') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'leitura_newsroman';
+    src: url('/fonts/334753-webfont.eot');
+    src: url('/fonts/334753-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/334753-webfont.woff2') format('woff2'),
+         url('/fonts/334753-webfont.woff') format('woff'),
+         url('/fonts/334753-webfont.ttf') format('truetype'),
+         url('/fonts/334753-webfont.svg#leitura_newsroman_2') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: normal;
+}
+
+h1,h2,h3 {
+  font-family: "leitura_newsroman", Georgia, Cambria, "Times New Roman", Times, serif;
+
+  b em,
+  em b {
+    font-family: "leitura_newsitalic_bold", Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  b {
+    font-family: "leitura_newsroman_bold", Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  em {
+    font-family: "leitura_newsitalic", Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+}
+
+h1 {
+  color: #353535;
+  font-size: $medium;
+  line-height: 50px;
+}
+
+h2 {
+  color: #19191f;
+  font-size: 30px;
+  line-height: $medium;
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  color: #505050;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+
+h5 {
+  color: #757575;
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+p {
+  color: $grey;
+  font-size: 20px;
+  font-weight: $light;
+  line-height: 30px;
+  letter-spacing: 0.5px;
+}

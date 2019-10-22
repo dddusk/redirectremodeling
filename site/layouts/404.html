@@ -1,0 +1,32 @@
+{{ partial "header" . }}
+<div class="container clearfix error-message">
+  <h1>
+    <strong>Error 404: </strong>
+    This page could not be found.<span>.. or can it?</span>
+  </h1>
+</div>
+
+<section id="project">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="section-title">
+          <h1>Perhaps check out one of these projects?</h1>
+        </div>
+      </div>
+      {{ range first 3 (where .Site.RegularPages "Section" "work") }}
+        <div class="col-md-4 col-sm-4">
+          <div class="project-item">
+            <a href="{{ .Permalink }}">
+              <img src="{{ .Params.featuredImageFile }}" class="img-responsive" alt="{{ .Params.client }}">
+            </a>
+          </div>
+          <div class="project-overlay">
+            <h3>{{ .Params.client }}</h3>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ partial "footer" . }}

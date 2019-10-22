@@ -1,0 +1,57 @@
+@keyframes rotate {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+
+#header {
+  background: none;
+  .navbar-header {
+    position: relative;
+
+    @media (max-width: 767px) {
+      padding: $micro;
+    }
+  }
+
+  .logo {
+    height: $medium;
+    width: auto;
+  }
+}
+
+.navbar-default {
+  border: none;
+  margin-bottom: 0;
+  padding-top: 45px;
+
+  .navbar-nav li {
+    a {
+      font-size: $tiny;
+      color: $grey;
+      line-height: $medium;
+      padding-right: 22px;
+      padding-left: 22px;
+      font-weight: $bold;
+      position: relative;
+      transition: color .2s;
+
+      &:hover {
+        color: $darkGold;
+      }
+    }
+
+    &.active > a {
+      color: $pink;
+    }
+  }
+
+  .navbar-toggle {
+    border: none;
+    padding-top: 10px;
+
+    .icon-bar {
+      background: $pink;
+      border-color: transparent;
+    }
+  }
+}

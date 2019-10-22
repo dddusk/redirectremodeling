@@ -1,0 +1,54 @@
+#people {
+  p {
+    margin: $tiny 0 4px 0;
+  }
+  h3 {
+    margin: 0 0 $medium 0;
+
+    @media (max-width: 980px) {
+      margin-bottom: $medium;
+    }
+  }
+}
+
+.people-item {
+  overflow: hidden;
+  position: relative;
+
+  img {
+    transition: all ease-in-out 0.4s;
+  }
+}
+
+.people-overlay {
+  background: rgba(255, 118, 96, 0.9);
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity .4s ease;
+
+  .social-icon {
+    position: relative;
+    text-align: center;
+    top: calc(50% - 17.5px);
+
+    li a {
+      background: white;
+      color: $grey;
+    }
+  }
+}
+
+.people-item:hover {
+  .people-overlay {
+    opacity: 1;
+  }
+  img {
+    transform: scale(1.1);
+  }
+}

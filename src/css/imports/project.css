@@ -1,0 +1,130 @@
+.project-item {
+  background: $grey;
+  border: 0 solid $pink;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  border-radius: $smallBorderRadius;
+  box-shadow: 1px 2px $micro 0 rgba(0,0,0,0.10);
+  transition: box-shadow linear .2s, transform linear .2s;
+
+  @media (min-width: $tablet) {
+    max-width: 350px;
+  }
+
+  &:hover {
+    transform: translateY(-$micro);
+    box-shadow: 1px $tiny $medium 0 rgba(0,0,0,0.20);
+  }
+
+  img {
+    border: 0 solid white;
+    box-sizing: border-box;
+    transition: border linear .1s;
+    max-width: 350px;
+  }
+}
+
+.project-overlay {
+  h3 {
+    color: $grey;
+    font-weight: normal;
+    margin-top: $micro;
+    font-size: 18px;
+    line-height: 32px;
+  }
+
+  h4 {
+    color: #858585;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+  }
+
+  p {
+    $font-size: 14px;
+    $line-height: 22px;
+    $lines-to-show: 2;
+
+    display: block;
+    display: -webkit-box;
+    font-weight: $regular;
+    font-size: $font-size;
+    line-height: $line-height;
+    max-width: 100%;
+    height: calc($font-size * $line-height * $lines-to-show);
+    margin: 0 auto;
+    font-size: $font-size;
+    line-height: $line-height;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+
+#project .project-overlay {
+  padding: $tiny 0 0 0;
+}
+
+.project-detail-text {
+  padding: 62px 82px;
+
+  @media (max-width: 767px) {
+    clear: both;
+    padding: $medium $tiny $small $tiny;
+  }
+
+
+  p {
+    line-height: $medium;
+    font-family: "leitura_newsroman", Georgia, Cambria, "Times New Roman", Times, serif;
+
+    @media (max-width: 767px) {
+      font-size: $tiny;
+      line-height: 30px;
+    }
+
+    b em,
+    em b {
+      font-family: "leitura_newsitalic_bold", Georgia, Cambria, "Times New Roman", Times, serif;
+    }
+
+    strong,
+    b {
+      font-family: "leitura_newsroman_bold", Georgia, Cambria, "Times New Roman", Times, serif;
+    }
+
+    em {
+      font-family: "leitura_newsitalic", Georgia, Cambria, "Times New Roman", Times, serif;
+    }
+  }
+
+  strong,
+  b,
+  a {
+    font-weight: $regular;
+  }
+}
+
+.project-detail-info {
+  padding: 12px 0 62px 0;
+
+  @media (max-width: 767px) {
+    clear: both;
+    display: table;
+    padding-bottom: 0;
+  }
+
+  p {
+    font-weight: $bold;
+  }
+
+  h3:last-child {
+    margin-top: 0;
+  }
+}

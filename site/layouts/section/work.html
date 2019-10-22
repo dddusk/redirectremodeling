@@ -1,0 +1,25 @@
+{{ partial "header" . }}
+<section id="project">
+  <div class="container">
+    <div class="row">
+      {{ range $index, $id :=   (.Paginate .Data.Pages.ByWeight ).Pages }}
+        <div class="col-md-4 col-sm-6">
+          <div class="project-item">
+            <a href="{{ .Permalink }}">
+              <img src="{{ .Params.featuredImageFile }}" class="img-responsive" alt="{{ .Params.title }}">
+            </a>
+          </div>
+          <div class="project-overlay">
+            <h3>{{ .Params.title }}</h3>
+            <p>{{ .Params.description | markdownify }}</p>
+          </div>
+        </div>
+        {{ if or (eq $index 2) (eq $index 5) }}
+          </div>
+          <div class="row">
+        {{ end }}
+      {{ end }}
+  </div>
+</section>
+{{ partial "bottom-cta" . }}
+{{ partial "footer" . }}

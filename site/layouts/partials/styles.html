@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/main.css"/>
+
+{{ if isset .Params "styleoverrides" }}
+  <link rel="stylesheet" href="{{ .Params.styleoverrides }}"/>
+{{ else if or (eq .Title "Work") (eq .Section "work") }}
+  <link rel="stylesheet" href="/css/work.css"/>
+{{ else if .IsHome }}
+  <link rel="stylesheet" href="{{ .Site.Data.landing.styleoverrides }}"/>
+{{ end }}

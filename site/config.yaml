@@ -1,0 +1,8 @@
+baseurl: "/"
+languageCode: "en-us"
+title: "Redirect Remodeling Digital"
+disable404: false
+metaDataFormat: "yaml"
+pluralizeListTitles: false
+permalinks:
+  work: /work/:title

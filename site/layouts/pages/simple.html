@@ -1,0 +1,35 @@
+{{ partial "header" . }}
+<section class="headline">
+  <div class="container thank-you-message">
+    <div class="row">
+      <div class="col-md-10 col-sm-12">
+        <h1><strong>Thank you for reaching out!</strong></h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="project">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="section-title">
+          <h1>Perhaps check out one of these projects?</h1>
+        </div>
+      </div>
+      {{ range first 3 (where .Site.RegularPages "Section" "work") }}
+        <div class="col-md-4 col-sm-4">
+          <div class="project-item">
+            <a href="{{ .Permalink }}">
+              <img src="{{ .Params.featuredImageFile }}" class="img-responsive" alt="{{ .Params.client }}">
+            </a>
+          </div>
+          <div class="project-overlay">
+            <h3>{{ .Params.client }}</h3>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ partial "footer" . }}

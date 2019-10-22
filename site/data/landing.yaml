@@ -1,0 +1,15 @@
+---
+styleoverrides: /css/landing.css
+
+hook: What we do
+headline:
+  lead: Vintage camper remodeling
+  verbs:
+    - with today's luxuries
+    - for a modern lifestyle
+    - that makes nature comfortable
+
+primarycta:
+  btntext: View Our Projects →
+  linksto: /work/
+---

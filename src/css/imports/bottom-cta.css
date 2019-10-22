@@ -1,0 +1,22 @@
+#bottom-cta {
+  background: url('/img/global/dark-bg-tile.jpg');
+  padding: $xxl 0;
+  margin: 0 auto;
+
+  h1 {
+    color: $offWhite;
+  }
+}
+
+#bottom-cta a {
+  border-bottom: 4px solid $pink;
+  display: inline-block;
+  color: $pink;
+  transition: padding .2 ease;
+
+  &:hover {
+    color: $pink;
+    text-decoration: none;
+    padding: 0 $tiny;
+  }
+}
