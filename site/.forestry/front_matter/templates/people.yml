@@ -40,5 +40,3 @@ fields:
     step: '1'
   description: In what order do you want this person to appear relative to the other
     people?
-pages:
-- site/content/people/you.md

@@ -74,8 +74,3 @@ fields:
   description: Starts at 1, goes left to right, top to bottom
   config:
     required: true
-pages:
-- site/content/work/art.md
-- site/content/work/from-digital-to-print-we-helped-reactathon-knock-it-out-of-the-park-this-year.md
-- site/content/work/enter-real-world-react.md
-- site/content/work/biz-me.md
