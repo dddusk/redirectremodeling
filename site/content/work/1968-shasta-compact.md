@@ -16,6 +16,5 @@ tags:
 - " Compact"
 - '1968'
 weight: 10
-draft: true
 
 ---
