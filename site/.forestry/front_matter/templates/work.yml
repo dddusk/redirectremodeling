@@ -4,8 +4,8 @@ hide_body: false
 fields:
 - type: text
   name: title
-  label: Client Name
-  description: The name of the company (eg. Cincinnati Mine Machinery Co.)
+  label: Title
+  description: eg. 1964 Airstream Globetrotter
   config:
     required: true
 - type: text
@@ -13,17 +13,11 @@ fields:
   label: Page Class Name
   description: This will be added to the body (eg. cmmc).
   config:
-    required: true
+    required: false
 - type: text
   name: headline
   label: Headline
   description: This will show up at the top of the work detail page.
-  config:
-    required: true
-- type: text
-  name: website
-  label: Website
-  description: Link to their website (eg. cinmine.com - no need for https://www)
   config:
     required: true
 - type: file
@@ -31,25 +25,8 @@ fields:
   label: Featured Image
   description: 350px x 350px
   config:
+    required: true
     maxSize: '4'
-- type: textarea
-  name: quote
-  label: Quote
-  description: What did someone say about this project?
-  config:
-    required: false
-    wysiwyg: true
-    schema:
-      format: markdown
-- type: textarea
-  name: attribution
-  label: Attribution
-  description: Who said the quote? Please bold the person's name.
-  config:
-    required: false
-    wysiwyg: true
-    schema:
-      format: markdown
 - type: image_gallery
   name: images
   label: Product Shots
@@ -60,7 +37,7 @@ fields:
   label: Project Description
   description: Tell us about this project.
   config:
-    required: true
+    required: false
     wysiwyg: true
     schema:
       format: markdown

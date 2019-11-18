@@ -93,7 +93,7 @@ a:hover, a:active, a:focus {
   text-align: center;
 }
 
-.headline {
+*:not(#work) .headline {
   padding: $medium 0;
 
   .header-text {
