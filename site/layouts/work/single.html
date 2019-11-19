@@ -5,6 +5,11 @@
     <div class="row">
       <div class="col-md-8 col-sm-12">
         <h2>{{ .Params.title }}</h2>
+        {{ if .Params.description }}
+          <div class="project-detail-text">
+            <p>{{ .Params.description | markdownify }}</p>
+          </div>
+        {{ end }}
       </div>
     </div>
   </div>
@@ -13,27 +18,17 @@
 <section id="project-detail">
   <div class="container">
     <div class="row">
+      <div class="col-md-12 col-sm-12 screenshot">
+        <img src="{{ .Params.featuredImageFile }}" class="img-responsive" alt="image">
+      </div>
       {{ range .Params.images }}
-        {{ if in . "half"}}
-          <div class="col-md-6 col-sm-6 screenshot">
-        {{ else }}
-          <div class="col-md-12 col-sm-12 screenshot">
-        {{ end }}
+        <div class="col-md-6 col-sm-6 screenshot">
           <img src="{{ . }}" class="img-responsive" alt="image">
-        </div>
-      {{ end }}
-      {{ if .Params.description }}
-        <div class="col-md-12 col-sm-12">
-          <div class="project-detail-text">
-            <p>{{ .Params.description | markdownify }}</p>
-          </div>
         </div>
       {{ end }}
     </div>
   </div>
 </section>
-
-{{ partial "bottom-cta" . }}
 
 {{ $length := len (where .Site.RegularPages "Section" "==" "work") }}
 {{ $posts := ($.Site.GetPage "section" "work").Pages.ByWeight }}
@@ -41,13 +36,13 @@
 
 {{ if eq $weight $length }}
   {{ range first 1 $posts }}
-    <a href="{{ .Permalink }}" alt="{{ .Params.title }}">
+    <a href="{{ .Permalink }}" alt="{{ .Params.title }}" class="upnext">
       <section id="project-detail-links">
         <div class="container">
           <div class="row">
             <div class="col-md-12 col-sm-12">
-              <h3>Next Project</h3>
-              <p>{{ .Params.title }}</p>
+              <h3>Up Next</h3>
+              <h2>{{ .Params.title }}</h2>
             </div>
           </div>
         </div>
@@ -57,13 +52,13 @@
 {{ else }}
   {{ range $index, $id := $posts }}
     {{ if eq $index $weight }}
-      <a href="{{ .Permalink }}" alt="{{ .Params.title }}">
+      <a href="{{ .Permalink }}" alt="{{ .Params.title }}" class="upnext">
         <section id="project-detail-links">
           <div class="container">
             <div class="row">
               <div class="col-md-12 col-sm-12">
-                <h3>Next Project</h3>
-                <p>{{ .Params.title }}</p>
+                <h3>Up Next</h3>
+                <h2>{{ .Params.title }}</h2>
               </div>
             </div>
           </div>
@@ -72,5 +67,7 @@
     {{ end }}
   {{ end }}
 {{ end }}
+
+{{ partial "bottom-cta" . }}
 
 {{ partial "footer" . }}

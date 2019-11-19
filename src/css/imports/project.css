@@ -23,7 +23,10 @@
     border: 0 solid white;
     box-sizing: border-box;
     transition: border linear .1s;
-    max-width: 350px;
+
+    @media (min-width: $tablet) {
+      max-width: 350px;
+    }
   }
 }
 
@@ -72,13 +75,8 @@
 }
 
 .project-detail-text {
-  padding: 62px 82px;
-
-  @media (max-width: 767px) {
-    clear: both;
-    padding: $medium $tiny $small $tiny;
-  }
-
+  padding: 0;
+  clear: both;
 
   p {
     line-height: $medium;

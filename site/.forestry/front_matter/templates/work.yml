@@ -14,12 +14,6 @@ fields:
   description: This will be added to the body (eg. cmmc).
   config:
     required: false
-- type: text
-  name: headline
-  label: Headline
-  description: This will show up at the top of the work detail page.
-  config:
-    required: true
 - type: file
   name: featuredImageFile
   label: Featured Image

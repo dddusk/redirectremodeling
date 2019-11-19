@@ -4,17 +4,15 @@ bodyclass: ''
 headline: 1968 Shasta Compact
 featuredImageFile: "/img/561103A6-D0E7-48DC-B24F-2EA49BCC920A.jpeg"
 images:
-- "/img/50436319-D7DC-41D4-8FA0-4E1CAD3A7D38.jpeg"
-- "/img/064F5960-6BE4-436D-B01B-24C7744F76DC.jpeg"
 - "/img/AFFA5C8E-6EE8-44EB-8E30-4031436BC194.jpeg"
 - "/img/97CFA457-0ABA-4F07-A270-02BEE1849B97.jpeg"
+- "/img/50436319-D7DC-41D4-8FA0-4E1CAD3A7D38.jpeg"
 - "/img/C0FEE433-34DD-4056-B71C-6110B83ECEC8.jpeg"
-- "/img/561103A6-D0E7-48DC-B24F-2EA49BCC920A.jpeg"
 description: ''
 tags:
 - Shasta
-- " Compact"
+- "Compact"
 - '1968'
-weight: 10
+weight: 1
 
 ---
