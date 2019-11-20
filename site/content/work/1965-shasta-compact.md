@@ -23,6 +23,5 @@ tags:
 - Job
 - Coca-Cola
 weight: 3
-draft: true
 
 ---
