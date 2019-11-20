@@ -32,6 +32,5 @@ tags:
 - Paint
 - Remodel
 weight: 5
-draft: true
 
 ---
