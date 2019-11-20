@@ -46,4 +46,5 @@ fields:
   config:
     required: true
 pages:
+- site/content/work/1955-aljoa.md
 - site/content/work/1968-shasta-compact.md
