@@ -92,7 +92,7 @@ gulp.task("images", () => (
 // optimize image assets for production
 gulp.task('optimize', function optimizeFunction(done) {
   // resize and compress images
-   gulp.src(["dist/img/**/*.{jpg,png}", "!dist/img/**/*bg*.{jpg,png}", "!dist/img/favicon/**/*.{jpg,png}"])
+   gulp.src(["dist/img/**/*.{jpg,png}", "!dist/img/favicon/**/*.{jpg,png}"])
     .pipe($.responsive({
         "**/*.jpg": [{
           width: 1170,

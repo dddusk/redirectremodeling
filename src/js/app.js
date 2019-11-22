@@ -1,3 +1,15 @@
+var winWidth = $(window).width();
+
+// autofix broken image links
+$(window).load(function() {
+  $('img').each(function() {
+    if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+      // image was broken, remove srcset
+      $(this).removeAttr("srcset");
+    }
+  });
+});
+
 $('.navbar-collapse a').on('click',function(){
   $(".navbar-collapse").collapse('hide');
 });
