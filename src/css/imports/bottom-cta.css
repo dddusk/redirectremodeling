@@ -8,7 +8,8 @@
   }
 }
 
-#bottom-cta a {
+#bottom-cta a,
+.see-all-projects {
   border-bottom: 4px solid $pink;
   display: inline-block;
   color: $pink;

@@ -91,7 +91,7 @@
     flex-direction: row-reverse;
 
     .circle {
-      background: url(/img/logo-large.svg) no-repeat center;
+      background: url(/img/global/logo-large.svg) no-repeat center;
       background-size: contain;
       height: calc($xxl * 1.61);
       margin: 0;
@@ -111,6 +111,12 @@
     padding-top: $xl;
     padding-bottom: calc($xl + $medium);
     box-shadow: 0 0 $xl rgba(0,0,0,0.05);
+  }
+
+  .project-overlay {
+    @media (max-width: 767px) {
+      padding-bottom: 40px;
+    }
   }
 }
 

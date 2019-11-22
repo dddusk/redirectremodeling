@@ -93,6 +93,9 @@
   .about-service-text {
     padding: 62px 0;
 
+    @media (max-width: 767px) {
+      padding: 0;
+    }
 
     .section-title {
       padding-bottom: 0px;
@@ -106,6 +109,13 @@
       line-height: 26px;
       letter-spacing: 0.5px;
       padding: 2px 0;
+    }
+
+    @media (max-width: 767px) {
+      ul {
+        padding: 0 20px;
+        margin: 0;
+      }
     }
   }
 }
