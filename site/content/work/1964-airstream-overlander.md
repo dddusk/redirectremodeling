@@ -31,6 +31,6 @@ tags:
 - Flooring
 - Paint
 - Remodel
-weight: 5
+weight: 1
 
 ---

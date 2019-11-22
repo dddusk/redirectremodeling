@@ -17,7 +17,13 @@ import S from "string";
 import webpack from "webpack";
 import webpackConfig from "./webpack.conf";
 import runSequence from "run-sequence";
+import imagemin from "gulp-imagemin";
+import responsive from "gulp-responsive";
+import imgRetina from "gulp-responsive-imgz";
 
+
+const DEST = "./dist/";
+const $ = require('gulp-load-plugins')();
 const browserSync = BrowserSync.create();
 const hugoBin = "hugo";
 const defaultArgs = ["-d", "../dist", "-s", "site", "-v"];
@@ -27,10 +33,10 @@ gulp.task("hugo-preview", (cb) => buildSite(cb, ["--buildDrafts", "--buildFuture
 
 
 gulp.task("build", function(callback) {
-  runSequence(["css", "js", "fonts", "src-root", "images", "hugo"], "index-site");
+  runSequence(["css", "js", "fonts", "src-root", "images", "hugo"], "optimize");
 });
 gulp.task("build-preview", function(callback) {
-  runSequence(["css", "js", "fonts", "src-root", "images", "hugo-preview"], "index-site");
+  runSequence(["css", "js", "fonts", "src-root", "images", "hugo-preview"]);
 });
 
 gulp.task("css", () => (
@@ -83,6 +89,106 @@ gulp.task("images", () => (
     .pipe(browserSync.stream())
 ));
 
+// optimize image assets for production
+gulp.task('optimize', function optimizeFunction(done) {
+  // resize and compress images
+   gulp.src(["dist/img/**/*.{jpg,png}", "!dist/img/**/*bg*.{jpg,png}", "!dist/img/favicon/**/*.{jpg,png}"])
+    .pipe($.responsive({
+        "**/*.jpg": [{
+          width: 1170,
+        }, {
+          width: 2340,
+          rename: {suffix: "@2x"}
+        }, {
+          width: 3510,
+          rename: {suffix: "@3x"}
+        }],
+        "**/*.png": [{
+          width: 1170,
+        }, {
+          width: 2340,
+          rename: {suffix: "@2x"}
+        }, {
+          width: 3510,
+          rename: {suffix: "@3x"}
+        }],
+      }, {
+        withoutEnlargement: true,
+        skipOnEnlargement: false,
+        errorOnEnlargement: false,
+        errorOnUnusedConfig: false,
+        errorOnUnusedImage: false,
+        passThroughUnused: true,
+        strictMatchImages: false
+      }))
+      .pipe(imagemin({
+        interlaced: true,
+        progressive: true,
+        optimizationLevel: 7,
+      }))
+    .pipe(gulp.dest(DEST+"img")),
+
+  gulp.src(["dist/img/**/*.svg", "dist/img/**/*.gif"])
+    .pipe(imagemin([
+      imagemin.gifsicle({
+        interlaced: true,
+        optimizationLevel: 3
+      }),
+      imagemin.svgo({plugins: [{
+        removeViewBox: true,
+        cleanupAttrs: true,
+        inlineStyles: true,
+        removeDoctype: true,
+        removeXMLProcInst: true,
+        removeComments: true,
+        removeMetadata: true,
+        removeTitle: true,
+        removeDesc: true,
+        removeUselessDefs: true,
+        removeXMLNS: true,
+        removeEditorsNSData: true,
+        removeEmptyAttrs: true,
+        removeHiddenElems: true,
+        removeEmptyText: true,
+        removeEmptyContainers: true,
+        removeViewBox: true,
+        cleanupEnableBackground: true,
+        minifyStyles: true,
+        removeNonInheritableGroupAttrs: true,
+        removeUselessStrokeAndFill: true,
+        removeUnusedNS: true,
+        cleanupIDs: true,
+        cleanupNumericValues: true,
+        cleanupListOfValues: true,
+        collapseGroups: true,
+        mergePaths: true,
+        convertShapeToPath: true,
+        sortAttrs: true,
+        removeAttrs: true,
+        removeElementsByAttr: true,
+        removeStyleElement: true,
+        removeScriptElemen: true
+      }]})
+    ]))
+    .pipe(gulp.dest(DEST+"img")),
+
+  gulp.src(["dist/img/favicon/**/*"])
+    .pipe(gulp.dest(DEST+"img/favicon")),
+
+  // Add srcset to images. Don't change the references in the docs because we
+  // didn't generate optimized images for them above.
+  gulp.src(["dist/**/*.html", "!dist/docs/**/*.html"])
+    .pipe(imgRetina({
+      suffix: {
+        1: '',
+        2: '@2x',
+        3: '@3x'
+      }
+    }))
+    .pipe(gulp.dest(DEST))
+  done();
+});
+
 gulp.task("server", ["hugo", "css", "js", "fonts", "src-root", "images"], () => {
   browserSync.init({
     server: {
@@ -96,65 +202,6 @@ gulp.task("server", ["hugo", "css", "js", "fonts", "src-root", "images"], () => 
   gulp.watch("./src/fonts/**/*", ["fonts"]);
   gulp.watch("./src/*", ["src-root"]);
   gulp.watch("./site/**/*", ["hugo"]);
-});
-
-gulp.task("index-site", (cb) => {
-
-  var pagesIndex = [];
-
-  return gulp.src("dist/**/*.html")
-    .pipe(reduce(function(memo, content, file, cb) {
-
-      var section      = S(file.path).chompLeft(file.cwd + "/dist").between("/", "/").s,
-          title        = S(content).between("<title>", "</title>").collapseWhitespace().chompRight(" | Redirect Remodeling Digital").s,
-          pageContent  = S(content).collapseWhitespace().between('search-results">', '<footer class="footer').stripTags().collapseWhitespace().s,
-          href         = S(file.path).chompLeft(file.cwd + "/dist").s,
-          pageInfo     = new Object(),
-          isRestricted = false,
-          blacklist    = [
-            "/page/",
-            "/tags/",
-            "/google2bc58d5c439bc9bf",
-            "/google9809c51e1efe86a0",
-            "/pages/index.html",
-            "/thanks",
-            "404"
-          ];
-
-      // fixes homepage title
-      if (href === "/index.html") {
-        title = "Homepage";
-      }
-
-      // remove trailing 'index.html' from qualified paths
-      if (href.indexOf('/index.html') !== -1) {
-        href = S(href).strip('index.html').s;
-      }
-
-      // determine if this file is restricted
-      for (let ignoredString of blacklist) {
-        if (href.indexOf(ignoredString) !== -1) {
-          // console.log('ignored: ' + href + ' because of ' + ignoredString);
-          isRestricted = true;
-          break;
-        }
-      }
-
-      // only push files that aren't ignored
-      if (!isRestricted) {
-        pageInfo["section"] = section;
-        pageInfo["title"]   = title;
-        pageInfo["href"]    = href;
-
-        pageInfo["content"] = pageContent;
-
-        pagesIndex.push(pageInfo);
-      }
-
-      cb(null, JSON.stringify(pagesIndex));
-    }, "{}"))
-    .pipe(rename("PagesIndex.json"))
-    .pipe(gulp.dest("./dist/js/lunr"));
 });
 
 function buildSite(cb, options) {

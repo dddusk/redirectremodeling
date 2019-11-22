@@ -13,6 +13,6 @@ tags:
 - Shasta
 - "Compact"
 - '1968'
-weight: 1
+weight: 5
 
 ---
