@@ -89,43 +89,47 @@ gulp.task("images", () => (
     .pipe(browserSync.stream())
 ));
 
-// optimize image assets for production
-gulp.task('optimize', function optimizeFunction(done) {
+gulp.task("optimize", () => (
   // resize and compress images
-   gulp.src(["dist/img/**/*.{jpg,png}", "!dist/img/favicon/**/*.{jpg,png}"])
+   gulp.src(["dist/img/**/*.{jpg,jpeg,png}", "!dist/img/favicon/**/*.{jpg,png}"])
     .pipe($.responsive({
-        "**/*.jpg": [{
-          width: 1170,
-        }, {
-          width: 2340,
-          rename: {suffix: "@2x"}
-        }, {
-          width: 3510,
-          rename: {suffix: "@3x"}
-        }],
-        "**/*.png": [{
-          width: 1170,
-        }, {
-          width: 2340,
-          rename: {suffix: "@2x"}
-        }, {
-          width: 3510,
-          rename: {suffix: "@3x"}
-        }],
+      '**/*.jpg': [{
+        width: 1170,
       }, {
-        withoutEnlargement: true,
-        skipOnEnlargement: false,
-        errorOnEnlargement: false,
-        errorOnUnusedConfig: false,
-        errorOnUnusedImage: false,
-        passThroughUnused: true,
-        strictMatchImages: false
-      }))
-      .pipe(imagemin({
-        interlaced: true,
-        progressive: true,
-        optimizationLevel: 7,
-      }))
+        width: 1170 * 2,
+        rename: { suffix: '@2x' }
+      }, {
+        width: 1170 * 3,
+        rename: { suffix: '@3x' }
+      }],
+      '**/*.jpeg': [{
+        width: 1170,
+      }, {
+        width: 1170 * 2,
+        rename: { suffix: '@2x' }
+      }, {
+        width: 1170 * 3,
+        rename: { suffix: '@3x' }
+      }],
+      '**/*.png': [{
+        width: 1170,
+      }, {
+        width: 1170 * 2,
+        rename: { suffix: '@2x' }
+      }, {
+        width: 1170 * 3,
+        rename: { suffix: '@3x' }
+      }],
+    }, {
+      withoutEnlargement: true,
+      skipOnEnlargement: false,
+      errorOnEnlargement: false
+    }))
+    .pipe(imagemin([
+      imagemin.jpegtran({
+        progressive: true
+      })
+    ]))
     .pipe(gulp.dest(DEST+"img")),
 
   gulp.src(["dist/img/**/*.svg", "dist/img/**/*.gif"])
@@ -135,39 +139,7 @@ gulp.task('optimize', function optimizeFunction(done) {
         optimizationLevel: 3
       }),
       imagemin.svgo({plugins: [{
-        removeViewBox: true,
-        cleanupAttrs: true,
-        inlineStyles: true,
-        removeDoctype: true,
-        removeXMLProcInst: true,
-        removeComments: true,
-        removeMetadata: true,
-        removeTitle: true,
-        removeDesc: true,
-        removeUselessDefs: true,
-        removeXMLNS: true,
-        removeEditorsNSData: true,
-        removeEmptyAttrs: true,
-        removeHiddenElems: true,
-        removeEmptyText: true,
-        removeEmptyContainers: true,
-        removeViewBox: true,
-        cleanupEnableBackground: true,
-        minifyStyles: true,
-        removeNonInheritableGroupAttrs: true,
-        removeUselessStrokeAndFill: true,
-        removeUnusedNS: true,
-        cleanupIDs: true,
-        cleanupNumericValues: true,
-        cleanupListOfValues: true,
-        collapseGroups: true,
-        mergePaths: true,
-        convertShapeToPath: true,
-        sortAttrs: true,
-        removeAttrs: true,
-        removeElementsByAttr: true,
-        removeStyleElement: true,
-        removeScriptElemen: true
+        removeViewBox: true
       }]})
     ]))
     .pipe(gulp.dest(DEST+"img")),
@@ -175,19 +147,11 @@ gulp.task('optimize', function optimizeFunction(done) {
   gulp.src(["dist/img/favicon/**/*"])
     .pipe(gulp.dest(DEST+"img/favicon")),
 
-  // Add srcset to images. Don't change the references in the docs because we
-  // didn't generate optimized images for them above.
-  gulp.src(["dist/**/*.html", "!dist/docs/**/*.html"])
-    .pipe(imgRetina({
-      suffix: {
-        1: '',
-        2: '@2x',
-        3: '@3x'
-      }
-    }))
+  // add srcset to images
+  gulp.src("dist/**/*.html")
+    .pipe(imgRetina())
     .pipe(gulp.dest(DEST))
-  done();
-});
+));
 
 gulp.task("server", ["hugo", "css", "js", "fonts", "src-root", "images"], () => {
   browserSync.init({
