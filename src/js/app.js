@@ -1,5 +1,4 @@
 var winWidth = $(window).width();
-
 // autofix broken image links
 $(window).load(function() {
   $('img').each(function() {
