@@ -20,7 +20,11 @@ import runSequence from "run-sequence";
 import imagemin from "gulp-imagemin";
 import responsive from "gulp-responsive";
 import imgRetina from "gulp-responsive-imgz";
-
+const ExifTransformer = require('exif-be-gone');
+var each = require('gulp-each');
+var file = require('file-system');
+var fs = require('fs');
+var toStream = require('tostream');
 
 const DEST = "./dist/";
 const $ = require('gulp-load-plugins')();
@@ -91,6 +95,15 @@ gulp.task("images", () => (
 
 gulp.task("optimize", () => (
   // resize and compress images
+   gulp.src(["dist/img/**/*.{jpg,jpeg}", "!dist/img/favicon/**/*.{jpg}"])
+    .pipe(each(function(content, file, callback) {
+      const reader = fs.createReadStream(file.toString());
+      const writer = fs.createWriteStream(file.toString());
+
+      toStream(reader).pipe(new ExifTransformer()).pipe(writer);
+    }))
+    .pipe(gulp.dest(DEST+"img")),
+
    gulp.src(["dist/img/**/*.{jpg,jpeg,png}", "!dist/img/favicon/**/*.{jpg,png}"])
     .pipe($.responsive({
       '**/*.jpg': [{
@@ -125,11 +138,11 @@ gulp.task("optimize", () => (
       skipOnEnlargement: false,
       errorOnEnlargement: false
     }))
-    .pipe(imagemin([
-      imagemin.jpegtran({
-        progressive: true
-      })
-    ]))
+    .pipe(imagemin({
+      interlaced: true,
+      progressive: true,
+      optimizationLevel: 9,
+    }))
     .pipe(gulp.dest(DEST+"img")),
 
   gulp.src(["dist/img/**/*.svg", "dist/img/**/*.gif"])
