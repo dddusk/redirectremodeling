@@ -97,28 +97,28 @@ gulp.task("optimize", () => (
       '**/*.jpg': [{
         width: 1170,
       }, {
-        width: 1170 * 2,
+        width: 750 * 2,
         rename: { suffix: '@2x' }
       }, {
-        width: 1170 * 3,
+        width: 750 * 3,
         rename: { suffix: '@3x' }
       }],
       '**/*.jpeg': [{
         width: 1170,
       }, {
-        width: 1170 * 2,
+        width: 768 * 2,
         rename: { suffix: '@2x' }
       }, {
-        width: 1170 * 3,
+        width: 750 * 3,
         rename: { suffix: '@3x' }
       }],
       '**/*.png': [{
         width: 1170,
       }, {
-        width: 1170 * 2,
+        width: 768 * 2,
         rename: { suffix: '@2x' }
       }, {
-        width: 1170 * 3,
+        width: 750 * 3,
         rename: { suffix: '@3x' }
       }],
     }, {
