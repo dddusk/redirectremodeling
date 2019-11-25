@@ -20,7 +20,6 @@ import runSequence from "run-sequence";
 import imagemin from "gulp-imagemin";
 import responsive from "gulp-responsive";
 import imgRetina from "gulp-responsive-imgz";
-const jpegoptim = require('imagemin-jpegoptim');
 
 
 const DEST = "./dist/";
@@ -97,41 +96,39 @@ gulp.task("optimize", () => (
       '**/*.jpg': [{
         width: 1170,
       }, {
-        width: 750 * 2,
+        width: 1170 * 2,
         rename: { suffix: '@2x' }
       }, {
-        width: 750 * 3,
+        width: 1170 * 3,
         rename: { suffix: '@3x' }
       }],
       '**/*.jpeg': [{
         width: 1170,
       }, {
-        width: 768 * 2,
+        width: 1170 * 2,
         rename: { suffix: '@2x' }
       }, {
-        width: 750 * 3,
+        width: 1170 * 3,
         rename: { suffix: '@3x' }
       }],
       '**/*.png': [{
         width: 1170,
       }, {
-        width: 768 * 2,
+        width: 1170 * 2,
         rename: { suffix: '@2x' }
       }, {
-        width: 750 * 3,
+        width: 1170 * 3,
         rename: { suffix: '@3x' }
       }],
     }, {
-      withMetadata: true,
+      rotate: true,
       withoutEnlargement: true,
       skipOnEnlargement: false,
       errorOnEnlargement: false
     }))
     .pipe(imagemin([
-      jpegoptim({
-        stripAll: false,
-        stripExif: false,
-        progresseive: true
+      imagemin.jpegtran({
+        progressive: true
       })
     ]))
     .pipe(gulp.dest(DEST+"img")),
