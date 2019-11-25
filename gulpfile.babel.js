@@ -150,7 +150,13 @@ gulp.task("optimize", () => (
 
   // add srcset to images
   gulp.src("dist/**/*.html")
-    .pipe(imgRetina())
+    .pipe(imgRetina({
+      suffix: {
+        1: '',
+        2: '@2x',
+        3: '@3x'
+      }
+    }))
     .pipe(gulp.dest(DEST))
 ));
 
