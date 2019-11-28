@@ -1,8 +1,9 @@
 ---
 title: 1964 Airstream Globetrotter
 bodyclass: ''
-featuredImageFile: "/img/741176B4-1B27-4D7B-9365-924E23B46ED6.jpeg"
+featuredImageFile: "/img/BBF84395-93A0-4E4A-81E3-17105B082132.jpeg"
 images:
+- "/img/741176B4-1B27-4D7B-9365-924E23B46ED6.jpeg"
 - "/img/C5582F4F-BCFA-4B1E-8D93-0EE4A4B5C3CA.jpeg"
 - "/img/EBB98E4E-6D63-4BF6-BC2F-59650C54AE34.jpeg"
 - "/img/62E24428-F2B2-4C34-BAAF-0EBD114A648E.jpeg"
