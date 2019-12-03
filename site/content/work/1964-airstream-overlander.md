@@ -15,7 +15,9 @@ images:
 - "/img/ADD43514-92A3-4C28-BD70-1DA1B0C4F567.jpeg"
 - "/img/C2A0A190-EBF3-4925-B251-47DA628C5BD6.jpeg"
 - "/img/C5445C36-23F1-4ED3-936B-BEF2BB4EF270.jpeg"
-description: ''
+description: This vintage gem was the smallest dual-axel made in 1964. We wanted to
+  pay homage to this fully-updated Airstream's roots with era-correct design elements.
+  At the same time, enjoy the comforts of modern technology with clean and crisp finishes.
 tags:
 - '1964'
 - Airstream
