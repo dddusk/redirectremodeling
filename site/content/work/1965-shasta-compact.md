@@ -11,7 +11,9 @@ images:
 - "/img/AB6E9464-D933-412A-9C9A-462E9AA9D741.jpeg"
 - "/img/5E27A0C9-7739-43B7-950C-95C75A6042C8.jpeg"
 - "/img/59185187-EAD5-4CCC-B504-60B72661BB67.jpeg"
-description: ''
+description: Kick back and relax with an ice-cold Coca-Cola as you travel back in
+  time with this blast from the past. A fresh red paint job and white-walls are a
+  refreshing reminder of a simpler time.
 tags:
 - '1965'
 - Shasta
