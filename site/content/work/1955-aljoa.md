@@ -11,7 +11,9 @@ images:
 - "/img/93871A1F-405A-43FB-82D1-5709105DE2A6.jpeg"
 - "/img/AD3EBAA1-D189-4E4E-99D5-88CFBEAAE01E.jpeg"
 - "/img/68D66E38-0BBB-4B8F-A05B-AF2A0FD50AE0.jpeg"
-description: ''
+description: This two-tone beauty was designed to fit in with it's surroundings and
+  sleep the whole family with ease. This vintage-inspired mobile abode marrys the
+  charm of retro design with the technology of modern ammentities.
 tags:
 - '1955'
 - Ajoa
